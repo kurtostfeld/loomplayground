@@ -5,7 +5,7 @@ This is a simple project skeleton to try out early builds of Project Loom with S
 
 Steps:
 
-1. Download a Project Loom JDK binary from https://jdk.java.net/loom/
+1. Download a JDK 19 build: https://jdk.java.net/19/
 2. Unpack it. Point your JAVA_HOME environment variable to it. On MacOS it should look like this:
 
 ```bash
