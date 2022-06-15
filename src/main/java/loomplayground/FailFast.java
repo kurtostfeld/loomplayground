@@ -3,7 +3,6 @@ package loomplayground;
 import jdk.incubator.concurrent.StructuredTaskScope;
 
 import java.time.Duration;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 public class FailFast {
@@ -40,10 +39,9 @@ public class FailFast {
         }
     }
 
-    public static void main(String[] args) throws ExecutionException, InterruptedException {
+    public static void main(String[] args) throws InterruptedException {
         tryIt(true);
         tryIt(false);
         System.out.println("exiting.");
     }
-
 }

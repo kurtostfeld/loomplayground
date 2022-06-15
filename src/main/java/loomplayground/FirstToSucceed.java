@@ -4,7 +4,6 @@ import jdk.incubator.concurrent.StructuredTaskScope;
 
 import java.time.Duration;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
 
 public class FirstToSucceed {
     static String fastComputation() throws Exception {
@@ -25,9 +24,9 @@ public class FirstToSucceed {
         // Try three functions to compute a String. We stop when we get the first success.
         // Note that this doesn't wait for the slow computation to complete and this ignores the failed computation.
         try (var scope = new StructuredTaskScope.ShutdownOnSuccess<String>()) {
-            Future<String> f1 = scope.fork(FirstToSucceed::fastComputation);
-            Future<String> f2 = scope.fork(FirstToSucceed::slowComputation);
-            Future<String> f3 = scope.fork(FirstToSucceed::failedComputation);
+            scope.fork(FirstToSucceed::fastComputation);
+            scope.fork(FirstToSucceed::slowComputation);
+            scope.fork(FirstToSucceed::failedComputation);
 
             scope.join();
             String result = scope.result();
